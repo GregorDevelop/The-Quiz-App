@@ -141,7 +141,9 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
             resultDialog?.feedbackText = currentQuestion.feedback!
             resultDialog?.buttonText = "Next"
             
-            present(resultDialog!, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(self.resultDialog!, animated: true, completion: nil)
+            }
         }
         
 
