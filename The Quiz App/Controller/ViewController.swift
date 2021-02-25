@@ -26,6 +26,8 @@ class ViewController: UIViewController, QuizProtocol {
     
     func questionsRetrieved(_ questions: [Question]) {
 
+        self.questions = questions
+        print(questions)
     }
 
 }
