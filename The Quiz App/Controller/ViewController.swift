@@ -7,8 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, QuizProtocol {
 
+    
     var model = QuizModel()
     var questions = [Question]()
     var currentQuestionIndex = 0
@@ -16,10 +17,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        model.delegate = self
         model.getQuestions()
         
     }
 
+    //MARK: - QuestionsRetrieved protocol 
+    
+    func questionsRetrieved(_ questions: [Question]) {
+
+    }
 
 }
 

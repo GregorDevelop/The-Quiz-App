@@ -15,6 +15,7 @@
 		B0B5110625E771C60071323A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B5110425E771C60071323A /* LaunchScreen.storyboard */; };
 		B0B5111225E7722E0071323A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5111125E7722E0071323A /* Question.swift */; };
 		B0B5111725E7728C0071323A /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5111625E7728C0071323A /* QuizModel.swift */; };
+		B0B5111B25E774900071323A /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = B0B5111A25E774900071323A /* QuestionData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B0B5110725E771C60071323A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0B5111125E7722E0071323A /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		B0B5111625E7728C0071323A /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		B0B5111A25E774900071323A /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				B0B5111625E7728C0071323A /* QuizModel.swift */,
 				B0B5111125E7722E0071323A /* Question.swift */,
+				B0B5111A25E774900071323A /* QuestionData.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				B0B5110625E771C60071323A /* LaunchScreen.storyboard in Resources */,
 				B0B5110325E771C60071323A /* Assets.xcassets in Resources */,
 				B0B5110125E771C30071323A /* Main.storyboard in Resources */,
+				B0B5111B25E774900071323A /* QuestionData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
