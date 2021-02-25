@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UITableViewDelegate, ResultViewControllerProtocol {
 
     @IBOutlet weak var questionLabel: UILabel!
     
@@ -35,6 +35,8 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
         // Set up the model
         model.delegate = self
         model.getQuestions()
+        
+        resultDialog?.delegate = self
     }
 
     
@@ -100,26 +102,65 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        var title = ""
+        
         // User has tapped on a row, check if it's the right answer
         let currentQuestion = questions[currentQuestionIndex]
         
         if currentQuestion.correctAnswerIndex == indexPath.row {
             // User got it right
-
+            title = "Correct!"
+            numCorrect += 1
         } else {
             // User got it wrong
-
+            title = "Wrong!"
         }
         
-        
+        // Show the popup
         if resultDialog != nil {
+            
+            resultDialog?.titleText = title
+            resultDialog?.feedbackText = currentQuestion.feedback!
+            resultDialog?.buttonText = "Next"
+            
             present(resultDialog!, animated: true, completion: nil)
         }
         
-        currentQuestionIndex += 1
-        displayQuestion()
+
     }
     
+    
+    func dialogDismissed() {
+        // Increment the currentQuestionIndex
+        currentQuestionIndex += 1
+        
+        if currentQuestionIndex == questions.count {
+          
+            // The user has just answered the last question
+            // Show a summary dialog
+            if resultDialog != nil {
+                resultDialog?.titleText = "Summary"
+                resultDialog?.feedbackText = "You got \(numCorrect) correct out of \(questions.count) questions"
+                resultDialog?.buttonText = "Restart"
+                
+                present(resultDialog!, animated: true, completion: nil)
+            }
+        }
+        else if currentQuestionIndex > questions.count {
+          
+            // Restart
+            numCorrect = 0
+            currentQuestionIndex = 0
+            displayQuestion()
+        }
+        else if currentQuestionIndex < questions.count {
+           
+            // We have more questions to show
+            // Display the next question
+            displayQuestion()
+        }
+        
+    }
     
     
 }
