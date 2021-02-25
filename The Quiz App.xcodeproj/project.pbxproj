@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0506C3925E78C930030691B /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0506C3825E78C930030691B /* StateManager.swift */; };
 		B0B510FA25E771C30071323A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B510F925E771C30071323A /* AppDelegate.swift */; };
 		B0B510FC25E771C30071323A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B510FB25E771C30071323A /* SceneDelegate.swift */; };
 		B0B510FE25E771C30071323A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B510FD25E771C30071323A /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B0506C3825E78C930030691B /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		B0B510F625E771C30071323A /* The Quiz App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Quiz App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B510F925E771C30071323A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B510FB25E771C30071323A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		B0B5111425E772800071323A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B0506C3825E78C930030691B /* StateManager.swift */,
 				B0B5111625E7728C0071323A /* QuizModel.swift */,
 				B0B5111125E7722E0071323A /* Question.swift */,
 				B0B5111A25E774900071323A /* QuestionData.json */,
@@ -177,6 +180,7 @@
 				B0B510FE25E771C30071323A /* ViewController.swift in Sources */,
 				B0B5111225E7722E0071323A /* Question.swift in Sources */,
 				B0B510FA25E771C30071323A /* AppDelegate.swift in Sources */,
+				B0506C3925E78C930030691B /* StateManager.swift in Sources */,
 				B0B510FC25E771C30071323A /* SceneDelegate.swift in Sources */,
 				B0B5111725E7728C0071323A /* QuizModel.swift in Sources */,
 				B0B5112325E77FE90071323A /* ResultViewController.swift in Sources */,

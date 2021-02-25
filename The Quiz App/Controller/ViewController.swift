@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UITableViewDelegate, ResultViewControllerProtocol {
-
+    
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
@@ -58,6 +58,24 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
     func questionsRetrieved(_ questions: [Question]) {
         // Get a reference to the questions
         self.questions = questions
+        
+        // Check if we should restore the state, before showing question #1
+        let savedIndex = StateManager.retrieveValue(key: StateManager.questionIndexKey) as? Int
+        
+        if savedIndex != nil && savedIndex! < self.questions.count {
+            
+            // Set the current question to the saved index
+            currentQuestionIndex = savedIndex!
+            
+            // Retrieve the number correct from storage
+            let savedNumCorrect = StateManager.retrieveValue(key: StateManager.numCorrectKey) as? Int
+
+            if savedNumCorrect != nil {
+                numCorrect = savedNumCorrect!
+            }
+        }
+        
+        
         
         displayQuestion()
     }
@@ -129,7 +147,8 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
 
     }
     
-    
+    // MARK: - ResultViewControllerProtocol Methods
+
     func dialogDismissed() {
         // Increment the currentQuestionIndex
         currentQuestionIndex += 1
@@ -144,6 +163,8 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
                 resultDialog?.buttonText = "Restart"
                 
                 present(resultDialog!, animated: true, completion: nil)
+                
+                StateManager.clearState()
             }
         }
         else if currentQuestionIndex > questions.count {
@@ -158,6 +179,9 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
             // We have more questions to show
             // Display the next question
             displayQuestion()
+            
+            // Save state
+            StateManager.saveState(numCorrect: numCorrect, questionIndex: currentQuestionIndex)
         }
         
     }
