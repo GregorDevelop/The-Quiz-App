@@ -9,6 +9,12 @@ import UIKit
 
 class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UITableViewDelegate, ResultViewControllerProtocol {
     
+    @IBOutlet weak var stackViewLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var stackViewTrailingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var rootStackView: UIStackView!
+    
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
@@ -40,6 +46,43 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
     }
 
     
+    func slideInQuestion() {
+        
+        // Set the initial state
+        stackViewTrailingConstraint.constant = -1000
+        stackViewLeadingConstraint.constant = 1000
+        rootStackView.alpha = 0
+        view.layoutIfNeeded()
+        
+        // Animate it to the end state
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.stackViewLeadingConstraint.constant = 0
+            self.stackViewTrailingConstraint.constant = 0
+            self.rootStackView.alpha = 1
+
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func slideOutQuestion() {
+        
+        // Set the initial state
+        stackViewTrailingConstraint.constant = 0
+        stackViewLeadingConstraint.constant = 0
+        rootStackView.alpha = 1
+
+        view.layoutIfNeeded()
+        
+        // Animate it to the end state
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.stackViewLeadingConstraint.constant = -1000
+            self.stackViewTrailingConstraint.constant = 1000
+            self.rootStackView.alpha = 0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    
     func displayQuestion() {
         
         // Check if there are questions and check that the currentQuestionIndex is not out of bounds
@@ -50,6 +93,10 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
         
         // Reload the answers table
         tableView.reloadData()
+        
+        // Animate the question in
+        slideInQuestion()
+
     }
     
     
@@ -132,6 +179,11 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
         } else {
             // User got it wrong
             title = "Wrong!"
+        }
+        
+        // Slide out the question
+        DispatchQueue.main.async {
+            self.slideOutQuestion()
         }
         
         // Show the popup

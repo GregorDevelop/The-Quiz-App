@@ -22,10 +22,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4nC-Gu-4Ms">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpw-EG-gbn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpw-EG-gbn">
                                         <rect key="frame" x="20" y="0.0" width="374" height="431"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NQM-eF-nBX">
@@ -92,6 +92,9 @@
                     </view>
                     <connections>
                         <outlet property="questionLabel" destination="Qpw-EG-gbn" id="X31-53-HpZ"/>
+                        <outlet property="rootStackView" destination="4nC-Gu-4Ms" id="Blr-Y7-73D"/>
+                        <outlet property="stackViewLeadingConstraint" destination="OFT-zh-NQR" id="7gN-B6-h6w"/>
+                        <outlet property="stackViewTrailingConstraint" destination="P8a-Hy-yWe" id="cBU-AM-gRi"/>
                         <outlet property="tableView" destination="NQM-eF-nBX" id="v9i-hd-NYk"/>
                     </connections>
                 </viewController>
