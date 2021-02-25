@@ -17,14 +17,24 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
     var questions = [Question]()
     var currentQuestionIndex = 0
     
+    var numCorrect = 0
+    
+    var resultDialog: ResultViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        model.delegate = self
-        model.getQuestions()
+        // Initialize the result dialog
+        resultDialog = storyboard?.instantiateViewController(identifier: "ResultVC") as? ResultViewController
+        resultDialog?.modalPresentationStyle = .overCurrentContext
         
+        // Set self as the delegate and datasource for the tableview
         tableView.dataSource = self
         tableView.delegate = self
+       
+        // Set up the model
+        model.delegate = self
+        model.getQuestions()
     }
 
     
@@ -101,8 +111,16 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDataSource, UIT
 
         }
         
+        
+        if resultDialog != nil {
+            present(resultDialog!, animated: true, completion: nil)
+        }
+        
         currentQuestionIndex += 1
         displayQuestion()
     }
+    
+    
+    
 }
 
